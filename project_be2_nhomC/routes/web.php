@@ -19,12 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/data_subject',[SubjectController::class,'getall']);
 
+Route::get('/subjects',[SubjectController::class,'index'])->name('subject');
 Route::get('dashboard', [CustomAuthController::class, 'dashboard']); 
-Route::get('watchdata', [SubjectController::class, 'getall'])->name('watchdata');
+Route::get('watchdata', [SubjectController::class,'index'])->name('watchdata');
 
 Route::get('add', [SubjectController::class, 'add_view'])->name('add');
-Route::post('add_data', [SubjectController::class, 'add'])->name('add_custom');   
-
+Route::post('add_data', [SubjectController::class, 'add'])->name('add_custom');
+Route::get('/subject/delete/{subject_id}', [SubjectController::class,'destroy'])->name('subjects.delete');
 
