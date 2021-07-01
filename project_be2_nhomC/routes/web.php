@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\CustomAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/data_subject', function () {
-    return "data_subject";
-});
+Route::get('/data_subject',[SubjectController::class,'getall']);
+
+Route::get('dashboard', [CustomAuthController::class, 'dashboard']); 
+Route::get('watchdata', [SubjectController::class, 'getall'])->name('watchdata');
+
+Route::get('add', [SubjectController::class, 'add_view'])->name('add');
+Route::post('add_data', [SubjectController::class, 'add'])->name('add_custom');   
+
 
