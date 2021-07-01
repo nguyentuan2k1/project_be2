@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\subject;
+use Illuminate\Support\Facades\Session;
 
 class SubjectController extends Controller
 {
-  public function getall(Request $Request){
-   
-      $obj = new subject();
-      $dolax = $obj->all();
-      
-      return view('data_subject',['subjects' => $dolax]);
-  }
+  public function index(){
+    
+    $subject = new subject();
+    $data = $subject->all();
+    return view('subject',['subject' => $data]);
+ }
+
   public function add(Request $request)
   {
 
@@ -33,7 +34,7 @@ class SubjectController extends Controller
       'status' => 1,
       ]);
     
-      return view('auth.login');
+      return redirect()->route('subject');
  
    
    
@@ -47,5 +48,11 @@ class SubjectController extends Controller
     return view("auth.add");
   }
 
-  
+  public function destroy($subject_id){
+    subject::where('subject_id',$subject_id)->delete();
+
+    Session::flash('message', 'Delete successfully!');
+    Session::flash('alert-class', 'alert-success');
+    return redirect()->route('subject');
+ }
 }
