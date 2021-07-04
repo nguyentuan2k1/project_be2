@@ -26,3 +26,8 @@ Route::get('add', [SubjectController::class, 'add_view'])->name('add');
 Route::post('add_data', [SubjectController::class, 'add'])->name('add_custom');
 Route::get('/subject/delete/{subject_id}', [SubjectController::class,'destroy'])->name('subjects.delete');
 
+Route::get('/search',[SubjectController::class,'search']);
+
+
+
+

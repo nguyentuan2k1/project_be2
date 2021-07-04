@@ -55,4 +55,11 @@ class SubjectController extends Controller
     Session::flash('alert-class', 'alert-success');
     return redirect()->route('subject');
  }
+
+ public function search(Request $request){
+  $subject = subject::where('subject_name','like','%'.$request->key.'%')
+                      ->orwhere('status',$request->key)
+                      ->get();
+                      return view('search', compact('subject'));
+}
 }
