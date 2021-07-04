@@ -15,14 +15,12 @@ use App\Http\Controllers\CustomAuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+
 
 
 Route::get('/subjects',[SubjectController::class,'index'])->name('subject');
 Route::get('dashboard', [CustomAuthController::class, 'dashboard']); 
-Route::get('watchdata', [SubjectController::class,'index'])->name('watchdata');
+Route::get('/', [SubjectController::class,'index'])->name('watchdata');
 
 Route::get('add', [SubjectController::class, 'add_view'])->name('add');
 Route::post('add_data', [SubjectController::class, 'add'])->name('add_custom');
