@@ -11,7 +11,7 @@ class SubjectController extends Controller
   public function index(){
     
     $subject = new subject();
-    $data = $subject->all();
+    $data = $subject->paginate(15);
     return view('subject',['subject' => $data]);
  }
 

@@ -29,4 +29,8 @@
             </tbody>
         </table>
     </div>
+    <div class="d-flex justify-content-center">
+    {!! $subject->links() !!}
+</div>
+
     @endsection
