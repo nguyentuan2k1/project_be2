@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\subject;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class SubjectController extends Controller
 {
@@ -61,5 +62,18 @@ class SubjectController extends Controller
                       ->orwhere('status',$request->key)
                       ->get();
                       return view('search', compact('subject'));
-}
+ }
+
+ public function edit_view(Request $request){
+  
+  $result['info']=DB::table('subject')->where ('subject_id',$request->subject_id)->get()->toArray();
+  echo '<pre>';
+  print_r($result);
+  return view("auth.edit",$result);
+ }
+ public function update(Request $request){
+  DB::table('subject')->where ('subject_id',$request->subject_id)->update(['subject_name'=>$request->subject_name]);
+  DB::table('subject')->where ('subject_id',$request->subject_id)->update(['status'=>$request->status]);
+  return redirect()->route('subject');
+ }
 }

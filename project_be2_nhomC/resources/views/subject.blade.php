@@ -23,6 +23,9 @@
                     <td>
                         <!-- Delete -->
                         <a href="{{ route('subjects.delete',$subjects->subject_id) }}" class="btn btn-sm btn-danger">Delete</a>
+
+                         <!-- Update -->
+                        <a href="{{ route('subjects.edit',$subjects->subject_id) }}" class="btn btn-sm btn-danger">Update</a>
                     </td>
                 </tr>
                 @endforeach
