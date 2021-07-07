@@ -19,7 +19,7 @@ class SubjectSeeder extends Seeder
         for ($i = 0; $i < 100; $i++) {
             DB::table('subject')->insert([
                 'subject_name' => Str::random(55),
-                'status'=> Str::random(20)
+                'status'=> 1,
             ]);
         }
     }
