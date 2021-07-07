@@ -67,8 +67,8 @@ class SubjectController extends Controller
  public function edit_view(Request $request){
   
   $result['info']=DB::table('subject')->where ('subject_id',$request->subject_id)->get()->toArray();
-  echo '<pre>';
-  print_r($result);
+  //echo '<pre>';
+  //print_r($result);
   return view("auth.edit",$result);
  }
  public function update(Request $request){
