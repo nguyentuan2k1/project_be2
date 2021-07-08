@@ -35,7 +35,7 @@
                     <td>{!! $subjects->subject_name !!}</td>
                     <td>{!! $subjects->status !!}</td>
                     <td>
-                        <a href="" class="btn btn-sm btn-primary">Update</a>
+                        <a href="{{ route('subjects.edit',$subjects->subject_id) }}" class="btn btn-sm btn-primary">Update</a>
                     </td>
                     <td>
                         <!-- Delete -->
